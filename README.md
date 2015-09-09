@@ -1,8 +1,8 @@
 # angular-autocomplete
 
 I have not used any boilerplate code ([angular-gulp-browserify, ...](https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate)).
-In such small test project there was no need to use automation tools like Gulp. I started from scratch.
-I lined Angular, jQuery and Bootstrap from CDN.
+In such small test project there I did not put effort in usage of automation tools like Gulp. I started with blank project.
+I added Angular, jQuery and Bootstrap from CDN.
 Considering very small amount of CSS code, I did not use any CSS pre-processors. 
   
 I used real data from Google API. I created a directive ```<autocomplete>``` which handles autocompletion.
