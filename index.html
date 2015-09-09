@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="auto">
+<head>
+    <title>My Angular App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Angular autocomplete</h1>
+
+    <label>
+        Google suggestions:
+        <input id="blah" ng-model="query" type="text">
+        <autocomplete ng-model="query"></autocomplete>
+    </label>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="autocomplete.js"></script>
+
+    <p></p>
+</body>
+</html>

@@ -1,0 +1,11 @@
+#auto-wrapper {
+position: relative;
+}
+
+.suggestion-item {
+    padding: 5px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
