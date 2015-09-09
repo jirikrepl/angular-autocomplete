@@ -1,4 +1,10 @@
 angular.module('auto', [])
+    .controller('autocompletionCtrl', ['$scope', function($scope) {
+        $scope.clickItem = function(clickEvent) {
+            console.log(clickEvent.target.innerHTML);
+            $scope.$parent.query = clickEvent.target.innerHTML;
+        }
+    }])
     .factory('queryService', function ($http) {
         return {
             async: function (query) {
@@ -16,16 +22,14 @@ angular.module('auto', [])
         return {
             restrict: 'E',
             link: function (scope, element, attr) {
-                var p = $( "#blah" );
-                var position = p.position();
-                $( "p:last" ).text( "left: " + position.left + ", top: " + position.top );
-                $('#auto-wrapper').css('left', position.left + 'px');
+                var p = $( "#query-input" );
+                $('#auto-wrapper').css('left', p.position().left + 'px');
                 $('#auto-wrapper').css('width', p.width() + 'px');
 
-
                 scope.$watch(attr.ngModel, function (query) {
+                    console.log(element.ngModel);
+                    console.log(scope.ngModel);
                     if (query) {
-                        console.log(query);
                         queryService.async(query).then(function (data) {
                             scope.suggestions = queryService.returnData(data);
                         });
@@ -34,6 +38,10 @@ angular.module('auto', [])
                         console.log('scope.suggestions: ' + scope.suggestions);
                     }
                 });
+            },
+            scope: {
+                //ngModel: '='
+                //quirk: '=query'
             },
             templateUrl: 'template.html'
         };

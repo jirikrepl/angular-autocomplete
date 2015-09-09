@@ -1,11 +1,24 @@
 #auto-wrapper {
-position: relative;
+    position: relative;
 }
 
 .suggestion-item {
     padding: 5px;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    text-align: left;
+    cursor: default;
 }
 
+.suggestion-item:last-child {
+    border-bottom: 1px solid #ccc;
+}
+
+.suggestion-item:hover {
+    background-color: #d7d7d7;
+}
+
+.suggestion-item-wrapper {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    position: relative;
+    top: -16px;
+}
