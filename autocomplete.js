@@ -33,7 +33,6 @@ angular.module('auto', [])
                         });
                     } else {
                         scope.suggestions = null;
-                        console.log('scope.suggestions: ' + scope.suggestions);
                     }
                 });
             },

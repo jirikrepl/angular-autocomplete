@@ -1,10 +1,12 @@
 # angular-autocomplete
 
-I have not used any boilerplate code.
-In such small test project there was no need to use automation tools like Gulp. I just used Angular, jQuery and Bootstrap from CDN.
+I have not used any boilerplate code (angular-gulp-browserify, ...).
+In such small test project there was no need to use automation tools like Gulp. I started from scratch.
+I lined Angular, jQuery and Bootstrap from CDN.
+Considering very small amount of CSS code, I did not use any CSS pre-processors. 
   
-I used real data from Google API. I created a directive ```<autocomplete>``` which handles autocompletion
-
+I used real data from Google API. I created a directive ```<autocomplete>``` which handles autocompletion.
+Result items are build in template.html
 ```
 // autocomplete.js
 
@@ -23,7 +25,6 @@ I used real data from Google API. I created a directive ```<autocomplete>``` whi
                     });
                 } else {
                     scope.suggestions = null;
-                    console.log('scope.suggestions: ' + scope.suggestions);
                 }
             });
         },
@@ -34,8 +35,8 @@ I used real data from Google API. I created a directive ```<autocomplete>``` whi
 }])
 ```
 
-There is service named queryService which handles API call
 
+There is a service named queryService which handles API call.
 ```
 // autocomplete.js
 
@@ -54,8 +55,8 @@ There is service named queryService which handles API call
 })
 ```
 
-Directive uses this template to create suggestions' box. 
 
+Directive uses this template to create suggestions' box. 
 ```
 <!--template.html-->
 
