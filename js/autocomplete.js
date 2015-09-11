@@ -2,61 +2,9 @@ angular.module('app', [])
     .controller('urlCtrl', function ($scope) {
         $scope.url = 'http://suggestqueries.google.com/complete/search?client=firefox&q=';
     })
-    .controller('trieCtrl', function ($scope) {
-        $scope.states = [
-            "Alabama"
-            , "Alaska"
-            , "Arizona"
-            , "Arkansas"
-            , "California"
-            , "Colorado"
-            , "Connecticut"
-            , "Delaware"
-            , "District Of Columbia"
-            , "Florida"
-            , "Georgia"
-            , "Hawaii"
-            , "Idaho"
-            , "Illinois"
-            , "Indiana"
-            , "Iowa"
-            , "Kansas"
-            , "Kentucky"
-            , "Louisiana"
-            , "Maine"
-            , "Maryland"
-            , "Massachusetts"
-            , "Michigan"
-            , "Minnesota"
-            , "Mississippi"
-            , "Missouri"
-            , "Montana"
-            , "Nebraska"
-            , "Nevada"
-            , "New Hampshire"
-            , "New Jersey"
-            , "New Mexico"
-            , "New York"
-            , "North Carolina"
-            , "North Dakota"
-            , "Ohio"
-            , "Oklahoma"
-            , "Oregon"
-            , "Pennsylvania"
-            , "Rhode Island"
-            , "South Carolina"
-            , "South Dakota"
-            , "Tennessee"
-            , "Texas"
-            , "Utah"
-            , "Vermont"
-            , "Virginia"
-            , "Washington"
-            , "West Virginia"
-            , "Wisconsin"
-            , "Wyoming"
-        ];
-    })
+    .controller('trieCtrl', ['$scope', 'states', function ($scope, states) {
+        $scope.states = states;
+    }])
     .factory('queryService', function ($http) {
         return {
             async: function (query, suggestionsSource) {
