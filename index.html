@@ -3,20 +3,27 @@
 <head>
     <title>My Angular App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <div class="container">
-    <div class="text-center">
+    <div class="text-center" ng-controller="urlCtrl">
         <h1>angular-autocomplete</h1>
         <h4>using Google suggestion API</h4>
         <br>
-        <autocomplete></autocomplete>
+        <autocomplete suggestions-source="url" template-url="template/template.html"></autocomplete>
+    </div>
 
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-        <script src="autocomplete.js"></script>
+    <div class="text-center" ng-controller="trieCtrl">
+        <h4>using trie with static data</h4>
+        <br>
+        <autocomplete suggestions-source="states"></autocomplete>
     </div>
 </div>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="js/trie.js"></script>
+<script src="js/autocomplete.js"></script>
 </body>
 </html>
