@@ -26,6 +26,7 @@ angular.module('app', [])
                             scope.suggestions = queryService.returnData(data);
                         });
                     } else {
+                        // clear (close) suggestions
                         scope.suggestions = null;
                     }
                 });
