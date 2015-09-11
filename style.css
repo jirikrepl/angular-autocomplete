@@ -1,5 +1,6 @@
 #auto-wrapper {
     position: relative;
+    float: none;
 }
 
 .suggestion-item {

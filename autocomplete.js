@@ -1,4 +1,4 @@
-angular.module('auto', [])
+angular.module('app', [])
     .factory('queryService', function ($http) {
         return {
             async: function (query) {
