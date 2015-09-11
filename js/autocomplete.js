@@ -65,8 +65,7 @@ angular.module('app', [])
                     return data[1];
                 });
             },
-            trie: function (query, suggestionsSource) {
-                var trie = new Triejs();
+            trie: function (query, suggestionsSource, trie) {
                 for (var i = 0; i < suggestionsSource.length; i++) {
                     trie.add(suggestionsSource[i]);
                 }
@@ -81,19 +80,24 @@ angular.module('app', [])
         return {
             restrict: 'E',
             link: function (scope, element, attr) {
-                scope.$watch('query', function (query) {
-                    //console.log(scope.suggestionsSource);
-                    if (query) {
-                        if (typeof scope.suggestionsSource === 'string') {
-                            console.log('url');
-                            queryService.async(query, scope.suggestionsSource)
-                                .then(function (data) {
+
+                var queryFunction;
+                if (typeof scope.suggestionsSource === 'string') {
+                    queryFunction = function(query) {
+                        queryService.async(query, scope.suggestionsSource)
+                            .then(function (data) {
                                 scope.suggestions = queryService.returnData(data);
                             });
-                        } else {
-                            console.log('object');
-                            scope.suggestions = queryService.trie(query, scope.suggestionsSource);
-                        }
+                    }
+                } else {
+                    queryFunction = function(query) {
+                        var trie = new Triejs();
+                        scope.suggestions = queryService.trie(query, scope.suggestionsSource, trie);
+                    }
+                }
+                scope.$watch('query', function (query) {
+                    if (query) {
+                        queryFunction(query);
                     } else {
                         // clear (close) suggestions
                         scope.suggestions = null;
