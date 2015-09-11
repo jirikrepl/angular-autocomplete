@@ -1,10 +1,4 @@
 angular.module('auto', [])
-    .controller('autocompletionCtrl', ['$scope', function($scope) {
-        $scope.clickItem = function(clickEvent) {
-            console.log(clickEvent.target);
-            $scope.$parent.query = clickEvent.target.innerText;
-        }
-    }])
     .factory('queryService', function ($http) {
         return {
             async: function (query) {
@@ -22,11 +16,11 @@ angular.module('auto', [])
         return {
             restrict: 'E',
             link: function (scope, element, attr) {
-                var p = $( "#query-input" );
+                var p = $("#query-input");
                 $('#auto-wrapper').css('left', p.position().left + 'px');
                 $('#auto-wrapper').css('width', p.width() + 'px');
 
-                scope.$watch(attr.ngModel, function (query) {
+                scope.$watch('query', function (query) {
                     if (query) {
                         queryService.async(query).then(function (data) {
                             scope.suggestions = queryService.returnData(data);
@@ -35,9 +29,12 @@ angular.module('auto', [])
                         scope.suggestions = null;
                     }
                 });
+
+                scope.clickItem = function (clickEvent) {
+                    scope.query = clickEvent.target.innerText;
+                };
             },
-            scope: {
-            },
+            scope: {},
             templateUrl: 'template.html'
         };
     }]);
